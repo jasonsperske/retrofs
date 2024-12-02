@@ -1,0 +1,17 @@
+$def with (files, current_path)
+
+<p>
+    <a href="?action=upload">Upload a file</a>
+    <a href="?action=create_dir">Create a directory</a>
+</p>
+<ul>
+    $if current_path != '':
+        <li><a href="../" class="directory">..</a></li>
+    $for file in files:
+      <li>
+        $if file.is_dir():
+            <a href="$file.name/" class="directory">$file.name/</a>
+        $else:
+            <a href="$file.name" class="file">$file.name</a>
+      </li>
+</ul>
